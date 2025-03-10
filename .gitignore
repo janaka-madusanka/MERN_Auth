@@ -1,0 +1,44 @@
+# Node.js dependencies
+server/node_modules/
+client/node_modules/
+package-lock.json
+client/package-lock.json
+server/package-lock.json
+
+# Environment variables
+server/.env
+client/.env
+
+# Logs
+server/logs/
+client/logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Editor & OS-specific files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Build files
+server/dist/
+client/build/
+client/.next/  # If using Next.js
+
+# Public uploads (if applicable)
+server/uploads/
+client/public/uploads/
+
+# MongoDB database dumps
+server/dump/
+
+# Nodemon-related files
+server/.nodemon-debug.log
+
+# Cache
+server/.cache/
+client/.cache/
+.eslintcache
