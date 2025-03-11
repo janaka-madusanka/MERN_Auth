@@ -76,3 +76,4 @@ export const logout = async (req,res)=>{
         res.json({success:false, message:error.message});
     }
 }
+
