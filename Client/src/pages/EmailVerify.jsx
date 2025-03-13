@@ -10,10 +10,11 @@ const EmailVerify = () => {
   axios.defaults.withCredentials = true
   const { backendUrl, isLoggedin, userData, getUserData } = useContext(AppContent)
 
+  const navigate = useNavigate()
 
   const inputRefs = React.useRef([])
 
-  const navigate = useNavigate()
+
 
   const handleInput = (e, index) => {
     if (e.target.value.length > 0 && index < inputRefs.current.length - 1) {
@@ -40,8 +41,9 @@ const EmailVerify = () => {
 
 
   const onSubmitHandler = async (e) => {
+    e.preventDefault();
     try {
-      e.preventDefault();
+
       const otpArray = inputRefs.current.map(e => e.value)
       const otp = otpArray.join('')
 
