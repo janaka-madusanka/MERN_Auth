@@ -6,10 +6,8 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 
 const EmailVerify = () => {
-
   axios.defaults.withCredentials = true;
   const { backendUrl, isLoggedin, userData, getUserData } = useContext(AppContent);
-
   const navigate = useNavigate();
 
   const inputRefs = React.useRef([]);
@@ -61,22 +59,21 @@ const EmailVerify = () => {
   }, [isLoggedin, userData]);
 
   return (
-    <div className='flex items-center justify-center min-h-screen bg-gradient-to-br from-teal-600 to-teal-800'>
+    <div className='flex items-center justify-center min-h-screen bg-gradient-to-br from-teal-600 to-teal-800 px-4'>
+      <img onClick={() => navigate('/')} src={assets.logo} alt="Logo" className='absolute left-5 sm:left-20 top-5 w-28 sm:w-32 cursor-pointer' />
 
-      <img onClick={() => navigate('/')} src={assets.logo} alt="" className='absolute left-5 sm:left-20 top-5 w-28 sm:w-32 cursor-pointer' />
+      <form onSubmit={onSubmitHandler} className='bg-gray-800 bg-opacity-90 p-8 sm:p-10 rounded-xl shadow-xl w-full max-w-md space-y-6'>
+        <h1 className='text-white text-2xl sm:text-3xl font-bold text-center mb-2'>Email Verification</h1>
+        <p className='text-center text-gray-400 text-sm sm:text-lg mb-4'>Enter the 6-digit code sent to your email address.</p>
 
-      <form onSubmit={onSubmitHandler} className='bg-gray-800 bg-opacity-90 p-10 rounded-xl shadow-xl w-96 space-y-6'>
-        <h1 className='text-white text-3xl font-bold text-center mb-2'>Email Verification</h1>
-        <p className='text-center text-gray-400 text-lg mb-4'>Enter the 6-digit code sent to your email address.</p>
-
-        <div className='flex justify-between mb-8' onPaste={handlePaste}>
+        <div className='flex justify-center gap-2 sm:gap-4' onPaste={handlePaste}>
           {Array(6).fill(0).map((_, index) => (
             <input
               type="text"
               maxLength='1'
               key={index}
               required
-              className='w-14 h-14 bg-gray-700 text-white text-center text-2xl rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-teal-500'
+              className='w-10 h-10 sm:w-12 sm:h-12 bg-gray-700 text-white text-center text-xl sm:text-2xl rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-teal-500'
               ref={e => inputRefs.current[index] = e}
               onInput={(e) => handleInput(e, index)}
               onKeyDown={(e) => handleKeyDown(e, index)}
@@ -88,7 +85,6 @@ const EmailVerify = () => {
           Verify Email
         </button>
       </form>
-
     </div>
   )
 }
